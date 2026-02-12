@@ -16,14 +16,16 @@ Steghide / OpenStego: Industry-standard tools for embedding and extracting data.
 
 Linux (Kali): The environment used for the exploitation and analysis.
 
-## Steps Taken
-Preparation: Selected a "Cover Image" with high color complexity to better hide the data.
+## Steps 
+Selected a "Cover Image" with high color complexity to better hide the data.
+Create a coverfile using "touch (the name of the file)"
+use "echo" to embed the secret message into the file
+Then embed the Secret file into the image "steghide --embed -ef (the name of the file) -cf (image downladed)
+To extract Use steghide --extract -sf (the saved image ) -xf nowmydata txt
 
-Encryption: Encrypted the secret message first (because if the steganography is discovered, the data should still be unreadable).
+##Screenshot
 
-Embedding: Embeded the secret message into the image
 
-Extraction: Used the destination tool and the correct passphrase to pull the hidden text back out.
 
 ## Security Implications
 Why does this matter to an employer?

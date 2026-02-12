@@ -1,4 +1,4 @@
-##Project: Digital Invisible Ink (Steganography Lab)
+# **Project: Digital Invisible Ink (Steganography Lab)**
 ## Overview
 This project explores the art of Steganography—hiding sensitive data inside ordinary-looking files (like images or audio) so that no one even knows a secret message exists. Unlike encryption, which makes a message unreadable, steganography makes the message invisible to the naked eye.
 
@@ -18,14 +18,30 @@ Linux (Kali): The environment used for the exploitation and analysis.
 
 ## Steps 
 Selected a "Cover Image" with high color complexity to better hide the data.
+
 Create a coverfile using "touch (the name of the file)"
+
 use "echo" to embed the secret message into the file
+
 Then embed the Secret file into the image "steghide --embed -ef (the name of the file) -cf (image downladed)
+
+
 To extract Use steghide --extract -sf (the saved image ) -xf nowmydata txt
 
-##Screenshot
+## **Screenshot**
 
 
+
+<img width="657" height="472" alt="Screenshot 2026-02-12 103554" src="https://github.com/user-attachments/assets/0df3af3a-3a11-4140-851e-94b01d4c8f0f" />
+
+
+
+<img width="673" height="489" alt="Screenshot 2026-02-12 103815" src="https://github.com/user-attachments/assets/b9e7d7f6-c142-4e9f-be20-53a930426b3d" />
+
+
+
+
+<img width="647" height="479" alt="Screenshot 2026-02-12 104007" src="https://github.com/user-attachments/assets/4345fa9f-a273-4f23-94e0-93b35904049b" />
 
 ## Security Implications
 Why does this matter to an employer?

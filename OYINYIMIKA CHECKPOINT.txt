@@ -1,0 +1,147 @@
+﻿Check point 1:Virtualization, Networking & web service discovery.
+ 
+1. Complete the installation of Kali Linux on VirtualBox.
+Refer to the steps provided in the earlier skills. Make sure Kali is fully installed, updated, and that network connectivity is verified.                    
+2. Open a terminal in Kali Linux and run the following command: ping 8.8.8.8
+  
+
+
+
+
+
+  
+________________
+
+* What does the ping command do? The ping command tests your internet connectivity by sending small data packets to Google’s public DNS server (8.8.8.8) and measuring how long they take to return, indicating if you can reach the internet, the quality of that connection(latency/ speed), and if your network or ISP has issues.
+* What is the ip address 8.8.8.8, and why is it commonly used? The Ip address 8.8.8.8 belongs to Google Public DNS, a free, global service that translates domain names (like google.com into ip address. It is commonly used because it is fast, reliable, and secure
+* What is the objective of running this command? The objective is to verify internet connectivity, Test Network Latency, and diagnose DNS issues.
+2.1 Use the trace route 8.8.8.8 command from kali  
+•What does it show? It shows the Network path that your data takes to reach Google’s DNS (8.8.8.8). Revealing each router's hostname at the time.
+•How many hops does it take to reach Google’s DNS? 30 hops max
+• What does each line represent? They represent the Hop number, the IP address/Hostname, Round-Trip Times ( RTTs), and Asterisks(indicate no response from that hop within the timeout period.
+
+
+3. Use the IP address of your Kali Linux VM and your Windows host machine.
+* Use the appropriate command to find both IP addresses 
+  
+
+  
+
+•Try pinging one machine from the other  . 
+A "Request Timed Out" error when pinging a virtual machine (VM) usually means the signal is being sent, but the destination is not sending a reply back within the expected time. Since my VM is currently using the IP 10.0.2.15, it is running in NAT mode, which is the most common cause of this specific error.
+  
+
+* Can they communicate? Explain the results
+They can’t communicate, and this is a common issue because the VM is using HOST-ONLY network mode, which isolates it from the external network and sometimes the host itself, depending on the specific configuration.
+4. In VirtualBox network settings, test the following modes•NAT •Bridged Adapter
+  
+
+Then you will look for the network and click on it 
+  
+
+On Adapter 1, you will see attached to, you will either select NAT OR Bridged adapter
+  
+
+I selected the bridged Adapter for the first test
+  
+
+Then I went back to my Kali Linux
+  
+
+Then I will be running the command below to restart the network service.
+  
+
+  
+
+To perform the ping test, I will start by identifying the ip address
+  
+
+  
+
+  
+
+This is testing host to VM.
+  
+
+This is testing the VM to host
+*The above is a test for the bridged Adapter mode.
+
+
+•Moving on to the test for the NAT mode
+I will be following the same steps for the BRIDGED ADAPTER
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+* What is the difference between these two modes? NAT provides a VM with internet access through the host, acting like a separate network with its own IP address, hidden from the main network.
+While in the Bridged adapter mode, the VM appears as a distinct device directly on the physical network, getting its own ip from the router, allowing external access to the VM but requiring it to share the host’s network interface 
+* In which mode is VM able to ping the host machine and vice versa? The Bridged Adapter mode is where the VM can ping the host machine and vice versa.
+* Explain your observations. My observation is that on NAT, VM is isolated, uses the host as gateway ( like an app), easier setup, while on abridged VM is a full network Citizen ( like another PC) needs direct network access.
+5. Complete the installation of XAMPP on your Windows machine. Refer to the instructions provided in the earlier skills.
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+6.Launch XAMPP and access the default web page in your browser.
+  
+  
+
+
+
+7. Modify the default index.html file in the XAMPP htdocs folder
+  
+
+  
+
+  
+
+Is     
+8. Try to access the XAMPP web server from Kali Linux
+•To try and access the XAMPP web server from Kali Linux, I had to go to my command prompt to get my ip
+Then I did my ipaddr/ dashboard on my Kali browser to see if I could access it
+  
+
+•Yes, I was able to reach the XAMpp page
+•The virtual box network setting was changed from NAT to Bridged adapter
+
+
+9. Use Nmap from Kali Linux to scan the Windows host machine. nmap -sV < ip of the host>
+  
+
+•What open ports are detected? port 80, port 135,139,443,445,903 and 3306
+• What is the version of the web server (Apache)? The Apache https 2.4.58 is what I am using.
+•Can you identify the database server (e.g, MySQL) and its version?

@@ -12,7 +12,8 @@
 
      
 
-     
+     <img width="1914" height="886" alt="Screenshot 2026-03-11 111004" src="https://github.com/user-attachments/assets/03a99e37-f92d-43fa-a948-8f9dd0345e31" />
+
 
    - Instance type: t3.micro
    - Key pair: Select prestashop-key (same key as database)
@@ -36,8 +37,20 @@ Rule 3: HTTPS, Port 443, Source: Anywhere (0.0.0.0/0)
    Port Range: 3306  
    Source: Custom - Select application-sg
    - Save rules (The updated rule ensures my application server can access the database.)
+  
 
-     <img width="1131" height="373" alt="Screenshot 2026-02-19 003356" src="https://github.com/user-attachments/assets/949bf510-98fa-4379-8af6-e4f795af6ed7" />
+
+
+<img width="1913" height="728" alt="Screenshot 2026-03-11 112124" src="https://github.com/user-attachments/assets/9ab0472a-fada-4755-afd8-bea1d6a9915b" />
+
+
+
+
+
+
+
+
+
 
 6. Connect to Application Server On Windows: windows key + R, cd to the folder of the key pair and enter `ssh -i "Prestashop-key.pem" ubuntu@ec2<your application server publicip>.eu-north-1.compute.amazonaws.com`
 7. Install Apache Web Server
@@ -46,18 +59,23 @@ Rule 3: HTTPS, Port 443, Source: Anywhere (0.0.0.0/0)
     - ` sudo apt upgrade -y`
     - `sudo apt install apache2 -y`
 
-      <img width="1086" height="553" alt="Screenshot 2026-02-19 012007" src="https://github.com/user-attachments/assets/0c61df82-64ce-472b-88f4-90aa05108c57" />
-
 8.  Enable and start Apache: `sudo systemctl enable apache2 sudo systemctl start apache2`
 9.  Check apache status: “sudo systemctl status apache2”
 
-    <img width="1077" height="412" alt="Screenshot 2026-02-19 012107" src="https://github.com/user-attachments/assets/a5061379-3290-4a69-977f-f927b160a729" />
 
-10.  Test Apache: Open browser and go to `http://<public-ip>` You should see the Apache default page.
 
-      <img width="1104" height="680" alt="Screenshot 2026-02-19 012319" src="https://github.com/user-attachments/assets/c8cd9d88-68a4-48d1-a149-f999a8de4220" />
 
-11.  Install PHP and all required extensions:
+
+<img width="943" height="774" alt="Screenshot 2026-03-11 170511" src="https://github.com/user-attachments/assets/cb074e04-7d04-48ba-91a1-3b36272bccb6" />
+
+    
+
+11.  Test Apache: Open browser and go to `http://<public-ip>` You should see the Apache default page.
+
+      <img width="1856" height="894" alt="Screenshot 2026-03-11 170854" src="https://github.com/user-attachments/assets/056ecd96-53eb-4b0e-a73e-8d8236543219" />
+
+
+12.  Install PHP and all required extensions:
  ```
 sudo apt install php libapache2-mod-php php-mysql php-curl php-gd
 php-intl php-mbstring php-xml php-zip php-bcmath php-json php-soap unzip -y”
@@ -105,11 +123,13 @@ ErrorLog ${APACHE_LOG_DIR}/error.log
 CustomLog ${APACHE_LOG_DIR}/access.log combined 
 </VirtualHost>
 ```
-<img width="888" height="150" alt="Screenshot 2026-02-19 022028" src="https://github.com/user-attachments/assets/46b8295b-7c06-4ed1-8cd9-985e08c1d1ae" />
+
+<img width="835" height="313" alt="Screenshot 2026-03-12 105247" src="https://github.com/user-attachments/assets/4d328fe6-f132-4014-bba2-4dc15b6a1a21" />
+
 
 16. Disable default site : `sudo a2dissite 000-default.conf`
 17. Enable PrestaShop site: `sudo a2ensite prestashop.conf`
 18. Test configuration : `sudo apache2ctl configtest`
 19. Restart Apache: `sudo systemctl restart apache2`
 
-    <img width="888" height="150" alt="Screenshot 2026-02-19 022028" src="https://github.com/user-attachments/assets/a408eec2-a9a9-46b2-83c0-cc4b7adf3dcf" />
+    
